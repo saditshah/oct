@@ -268,7 +268,7 @@
                 </div>
                  <div class="input-control col">
                     <label for="event">Event</label>
-                    <input id="event" name="Event" type="text">
+                    <input id="evt" name="Event" type="text">
                     <div class="error"></div>
                 </div>
             </div>
@@ -294,16 +294,17 @@
         const resno = document.getElementById('Res_Number');
         const contact = document.getElementById('Contact');
         const sreason = document.getElementById('Secondary_Reason');
-        const event = document.getElementById('event');
+        const evnt = document.getElementById('evt');
         const details = document.getElementById('Details');
         const btn = document.getElementById('submit');
         const spinner = document.getElementById("spinner");
         let error = false;
 
         form.addEventListener('submit', e => {
+            
             e.preventDefault();
            
-         
+            error=false;
             validateInputs();
             if (error === false) {
                
@@ -348,7 +349,7 @@
             const resnoValue = resno.value.trim();
             const contactValue = contact.value.trim();
             const sreasonValue = sreason.value.trim();
-            const eventValue = event.value.trim();
+            const eventValue = evnt.value.trim();
             const detailsValue = details.value.trim();
             if (resnoValue === '') {
                 setError(resno, 'Reservation Number is required'); error = true;
@@ -356,35 +357,35 @@
                 setError(resno, 'Reservation Number should be 7 digits'); error = true;
             }
             else {
-                setSuccess(resno); error = false;
+                setSuccess(resno); 
             }
             
             if (contactValue === '') {
                 setError(contact, 'Contact is required'); error = true;
             } 
             else {
-                setSuccess(contact); error = false;
+                setSuccess(contact); 
             }
 
             if (sreasonValue === '') {
                 setError(sreason, 'Secondary Reason is required'); error = true;
             } 
             else {
-                setSuccess(sreason); error = false;
+                setSuccess(sreason); 
             }
 
             if (eventValue === '') {
-                setError(event, 'Event is required'); error = true;
+                setError(evnt, 'Event is required'); error = true;
             } 
             else {
-                setSuccess(event); error = false;
+                setSuccess(evnt); 
             }
 
             if (detailsValue === '') {
                 setError(details, 'Detail is required'); error = true;
             } 
             else {
-                setSuccess(details); error = false;
+                setSuccess(details); 
             }
 
         };
