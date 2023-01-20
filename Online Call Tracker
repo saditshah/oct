@@ -1,0 +1,413 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India - Online Tracker</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            font-family: 'Poppins', sans-serif;
+        }
+        .container{
+            padding-top: 25px;
+
+        }
+        #form {
+            width: 900px;
+            margin: auto;
+            padding: 10px 20px 10px 20px;
+            background-color: whitesmoke;
+            border-radius: 4px;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #form h1 {
+            color: #0f2027;
+            text-align: center;
+
+        }
+
+        #form button {
+            padding: 10px;
+            margin-top: 10px;
+            width: 250px;
+            color: white;
+            background-color: rgb(41, 57, 194);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .row {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-control.col {
+            width: 48%;
+        }
+
+        .input-control {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-control input,
+        textarea,
+        select {
+            border: 2px solid #c1c1c1;
+            border-radius: 4px;
+            display: block;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .input-control select,
+        textarea,
+        input:focus {
+            outline: 0;
+        }
+
+        .input-control.success input {
+            border-color: #09c372;
+        }
+        .input-control.success textarea {
+            border-color: #09c372;
+        }
+
+        .input-control.error input {
+            border-color: #ff3860;
+        }
+        
+        .input-control.error textarea {
+            border-color: #ff3860;
+        }
+        .input-control .error {
+            color: #ff3860;
+            font-size: 9px;
+            height: 13px;
+        }
+
+        .row.btn {
+            justify-content: center;
+        }
+
+
+        #spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #f25a41;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+        @media screen and (max-width:768px) {
+            #form {
+                width: 95%;
+                padding: 10px 10px 10px 10px;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+
+            .input-control.col {
+                width: 100%;
+            }
+
+            .row.btn {
+                align-items: center;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <form id="form" method="post">
+            <div class="row">
+                <h1 style="text-align:center; width:100%">India Office Call Tracker</h1>
+            </div>
+            <div class="row">
+                <div class="input-control col">
+                    <label for="dated">Dated</label>
+                    <input id="dated" name="Dated" type="date">
+                    <div class="error"></div>
+                </div>
+
+                <div class="input-control col">
+                    <label for="agent">Agent</label>
+                    <select name="Agent" id="agent">
+                        <option value="Ashish">Ashish</option>
+                        <option value="Amit Bandu">Amit Bandu</option>
+                        <option value="Esha">Esha</option>
+                        <option value="Geetakshi">Geetakshi</option>
+                        <option value="Pradeep">Pradeep</option>
+                        <option value="Sameer">Sameer</option>
+                        <option value="Sandeep">Sandeep</option>
+                        <option value="Amit Bhatt">Amit Bhatt</option>
+                        <option value="Shikha">Shikha</option>
+                        <option value="Summit">Summit</option>
+                        <option value="Varsha">Varsha</option>
+                        <option value="Vidhi">Vidhi</option>
+                        <option value="Vijay">Vijay</option>
+                        <option value="Shalinder">Shalinder</option>
+                        <option value="Komal">Komal</option>
+                        <option value="Rahul">Rahul</option>
+                        <option value="Ankush">Ankush</option>
+
+                    </select>
+                    <div class="error"></div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-control col">
+                    <label for="Source">Source</label>
+                    <select name="Source" id="Source">
+                        <option value="Call">Call</option>
+                        <option value="Email/Internal Extn/Teams">Email/Internal Extn/Teams</option>
+                        <option value="Request Tracker">Request Tracker</option>
+                        <option value="Voice Mail/Mobile">Voice Mail/Mobile</option>
+                    </select>
+                    <div class="error"></div>
+                </div>
+
+                <div class="input-control col">
+                    <label for="Contact">Contact</label>
+                    <input id="Contact" name="Contact" type="text">
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-control col">
+                    <label for="Res_Number">Reservation Number</label>
+                    <input id="Res_Number" name="Res_Number" type="text" onkeypress="return onlyNumberKey(event)"
+                        maxlength="7">
+                    <div class="error"></div>
+                </div>
+
+                <div class="input-control col">
+                    <label for="preason">Primary Reason</label>
+                    <select name="Primary_Reason" id="preason">
+                        <option value="Additional Services-Modifications">Additional Services-Modifications</option>
+                        <option value="Air Rebooking-Voluntary">Air Rebooking-Voluntary</option>
+                        <option value="Air Rebooking/Cancellations-Involuntary">Air Rebooking/Cancellations-Involuntary
+                        </option>
+                        <option value="Baggage Isuue/Query">Baggage Isuue/Query</option>
+                        <option value="Blank/Test/Wrong Number/Call Disconnect">Blank/Test/Wrong Number/Call Disconnect
+                        </option>
+                        <option value="Booking Reconfirmations/Travel Docs">Booking Reconfirmations/Travel Docs</option>
+                        <option value="Call Transfer">Call Transfer</option>
+                        <option value="Cancellations">Cancellations</option>
+                        <option value="Car-Rental">Car-Rental</option>
+                        <option value="Covid-General">Covid-General</option>
+                        <option value="Escalation-Client Error">Escalation-Client Error</option>
+                        <option value="Escalation-Covid Issue">Escalation-Covid Issue</option>
+                        <option value="Escalation-Gate 1 Error">Escalation-Gate 1 Error</option>
+                        <option value="Escalation-Vendor Error">Escalation-Vendor Error</option>
+                        <option value="Fresh Booking">Fresh Booking</option>
+                        <option value="Future Travel">Future Travel</option>
+                        <option value="General Enquiry">General Enquiry</option>
+                        <option value="Group PNR Reservations">Group PNR Reservations</option>
+                        <option value="Hotel/Train-Details/Reconfirmations">Hotel/Train-Details/Reconfirmations</option>
+                        <option value="IROP/Crisis/Strike>10 Pax">IROP/Crisis/Strike>10 Pax</option>
+                        <option value="Medical Issue/Death Case">Medical Issue/Death Case</option>
+                        <option value="Miscellaneous Call">Miscellaneous Call</option>
+                        <option value="Missed Call">Missed Call</option>
+                        <option value="Multi-Services/Tour Updates">Multi-Services/Tour Updates</option>
+                        <option value="Online Check In">Online Check In</option>
+                        <option value="Vendor/TM Call">Vendor/TM Call</option>
+                        <option value="Transfer Updates/Information">Transfer Updates/Information</option>
+                        <option value="Cruize Details">Cruize Details</option>
+
+                    </select>
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-control col">
+                    <label for="sreason">Secondary Reason</label>
+
+                    <input id="Secondary_Reason"  name="Secondary_Reason">
+                    <div class="error"></div>
+                </div>
+                 <div class="input-control col">
+                    <label for="event">Event</label>
+                    <input id="event" name="Event" type="text">
+                    <div class="error"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-control">
+                    <label for="details">Details</label>
+                    <textarea rows="7" cols="60" name="Details" id="Details"></textarea>
+                    <div class="error"></div>
+                </div>
+            </div>
+
+           
+            <div class="row btn">
+                <button type="submit" id="submit">Submit</button>
+            </div>
+
+        </form>
+        <div hidden id="spinner"></div>
+    </div>
+
+    <script>
+
+        const resno = document.getElementById('Res_Number');
+        const contact = document.getElementById('Contact');
+        const sreason = document.getElementById('Secondary_Reason');
+        const event = document.getElementById('event');
+        const details = document.getElementById('Details');
+        const btn = document.getElementById('submit');
+        const spinner = document.getElementById("spinner");
+        let error = false;
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+           
+         
+            validateInputs();
+            if (error === false) {
+               
+                submitData();
+                
+            }
+           
+        });
+
+        const setError = (element, message) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = message;
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success')
+        }
+
+        const setSuccess = element => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        };
+
+
+        function onlyNumberKey(evt) {
+
+            // Only ASCII character in that range allowed 
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+        window.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById("dated").valueAsDate = new Date();
+        });
+
+        const validateInputs = () => {
+            const resnoValue = resno.value.trim();
+            const contactValue = contact.value.trim();
+            const sreasonValue = sreason.value.trim();
+            const eventValue = event.value.trim();
+            const detailsValue = details.value.trim();
+            if (resnoValue === '') {
+                setError(resno, 'Reservation Number is required'); error = true;
+            } else if (resnoValue < 1000000) {
+                setError(resno, 'Reservation Number should be 7 digits'); error = true;
+            }
+            else {
+                setSuccess(resno); error = false;
+            }
+            
+            if (contactValue === '') {
+                setError(contact, 'Contact is required'); error = true;
+            } 
+            else {
+                setSuccess(contact); error = false;
+            }
+
+            if (sreasonValue === '') {
+                setError(sreason, 'Secondary Reason is required'); error = true;
+            } 
+            else {
+                setSuccess(sreason); error = false;
+            }
+
+            if (eventValue === '') {
+                setError(event, 'Event is required'); error = true;
+            } 
+            else {
+                setSuccess(event); error = false;
+            }
+
+            if (detailsValue === '') {
+                setError(details, 'Detail is required'); error = true;
+            } 
+            else {
+                setSuccess(details); error = false;
+            }
+
+        };
+
+        function submitData() {
+            const form = document.getElementById('form');
+            spinner.removeAttribute('hidden');
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw9E2XWjhwRGl0TQ2ILVNt1bG6-5UXJdnYn4ggQYY7rSze141R9lWjUimIVdZRh94559g/exec'
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert("Record Saved...");
+                    form.reset();
+                    document.getElementById("dated").valueAsDate = new Date();
+                    spinner.setAttribute('hidden', '');
+                })
+                .catch(error => console.error('Error!', error.message))
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>
